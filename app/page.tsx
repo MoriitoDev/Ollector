@@ -1,65 +1,72 @@
-import Image from "next/image";
+"use client";
+
+//npm install -D tailwind-scrollbar-hide
+import { useRef, ChangeEvent, useState } from "react";
 
 export default function Home() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [resp, setResp] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const handleButtonClick = () => fileInputRef.current?.click();
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) setFileName(file.name);
+  };
+
+  const sendToPython = async () => {
+    if (!inputValue) return alert("Escribe algo primero");
+
+    try {
+      const response = await fetch("http://localhost:8000/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: inputValue }), 
+      });
+
+      const data = await response.json();
+      //alert("Respuesta de servidor: " + data.response);
+      setResp(data.response);
+      setInputValue(""); 
+    } catch (error) {
+      console.error("Error conectando con Python:", error);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main style={{ backgroundColor: '#161616' }} className="flex h-screen w-screen flex-col justify-center items-center">
+      <img src="/Ollama-Teacher.svg" alt="Logo" className="bg-white size-24 rounded-full mb-8" />
+
+      <p className="w-11/12 h-auto text-center">
+        {resp}
+        </p>
+
+      <div className="flex items-center m-5 w-9/12 h-28 rounded-3xl bg-[#272727] px-4">
+        <input 
+          type="text" 
+          placeholder="Write something..." 
+          className="bg-transparent text-white text-left px-3 w-full outline-none"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <input type="file" ref={fileInputRef} onChange={handleFileChange} accept=".pdf" className="hidden" />
+
+        <button onClick={handleButtonClick} type="button" className="shrink-0 size-10 bg-[#414040] rounded-full flex justify-center items-center hover:bg-white transition-all m-2">
+          <img src="/add.svg" alt="Plus" className="size-5" />
+        </button>
+
+        <button 
+          onClick={sendToPython}
+          type="button" 
+          className="shrink-0 size-10 bg-[#414040] rounded-full flex justify-center items-center hover:bg-white transition-all m-2"
+        >
+          <img src="/arrow.svg" alt="Enviar" className="size-5" />
+        </button>
+      </div>
+      <p className="text-gray-400 text-xs">{fileName ? `Archivo: ${fileName}` : "No files uploaded..."}</p>
+    </main>
   );
 }
