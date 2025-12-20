@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦙 Ollector: Your Personal AI Teacher
 
-## Getting Started
+**Ollector** is an interactive learning platform that combines the local power of **Ollama** with a modern **Next.js** interface. It is designed to act as a patient, professional, and inspiring teacher that can analyze PDF documents and provide real-time explanations with a fluid typewriter effect.
 
-First, run the development server:
+<p align="center">
+  <img src="/src-tauri/icons/Ollama-Teacher.ico" width="150" alt="Ollector Logo">
+  <br>
+  <i>"Inspired by Ollama, designed for scholars."</i>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Real-Time Streaming**: Responses are displayed word-by-word using *Server-Sent Events (SSE)*, creating a natural typewriter effect for a better user experience.
+* **Document-Based Learning (RAG)**: Upload PDF study materials to transform Ollector into a specialized tutor that follows strict rules to answer using only the provided text.
+* **Scholarly Identity**: The platform features a unique visual brand—a scholarly llama with glasses reading a book—to represent wisdom and academic support.
+* **Educational Persona**: The AI maintains an encouraging, educational, and clear tone, symbolized by the studious character in the logo.
+* **Privacy-First**: Powered by Ollama, all language processing happens locally on your machine.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+* **Next.js 15** (App Router)
+* **Tailwind CSS** (Clean dark theme with hidden scrollbars)
+* **TypeScript**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
+* **Python 3.10+**
+* **FastAPI** (High-performance streaming)
+* **Ollama Python SDK** (Model: `llama3.2`)
+* **PyPDF2** (PDF text extraction)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Installation & Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Prerequisites
+* Install [Ollama](https://ollama.com/) and download the model:
+    ```bash
+    ollama run llama3.2
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Install the required dependencies:
+    ```bash
+    pip install fastapi uvicorn ollama PyPDF2 python-multipart
+    ```
+
+### 2. Launching the app
+
+1. Navigate to the ```/app``` folder.
+
+1.  Start the FastAPI server:
+    ```bash
+    uvicorn main:app --reload
+    ```
+
+2.  Install the packages:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npx @tauri-apps/cli dev
+    ```
+
+---
+
+## 📖 How to Use
+
+1.  **General Chat**: Simply type your question in the input field. Ollector will explain concepts using analogies and a supportive tone.
+2.  **Study Mode (PDF)**:
+    * Click the **"+"** button to upload a PDF file.
+    * Once uploaded, Ollector will use the document as its primary source of truth.
+    * Ask questions about the specific content (e.g., "What are the main skills listed in this document?").
+
+---
+
+## 🎨 Branding & Credits
+
+* **IA Engine**: Powered by [Ollama](https://ollama.com/).
+
+---

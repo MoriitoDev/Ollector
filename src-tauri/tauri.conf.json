@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "PDF Buddy",
+        "title": "Ollector",
         "width": 800,
         "height": 600,
         "resizable": true,
@@ -27,6 +27,7 @@
     "active": true,
     "targets": "all",
     "icon": [
+      "icons/Ollama-Teacher-2.ico",
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
