@@ -54,7 +54,7 @@
 
 1.  Start the FastAPI server:
     ```bash
-    uvicorn main:app --reload
+    python -m uvicorn main:app --reload
     ```
 
 2.  Install the packages:
