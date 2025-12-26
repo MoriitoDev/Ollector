@@ -41,12 +41,14 @@ def get_ai_response(prompt, pdf_content):
                 {"role": "system", "content": content},
                 {"role": "user", "content": prompt}
             ],
-            options={"temperature": 0.5},
+            options={"temperature": 0.5}, # From 0 to 1, the higher the more creative
             stream=True,
         )   
 
+        print("Ollama response started...")
         for chunk in response:
              yield chunk['message']['content']
+             print(chunk['message']['content'])
 
     except Exception as e:
         return f"Error with Ollama: {str(e)}"

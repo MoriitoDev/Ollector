@@ -19,6 +19,7 @@ export default function Home() {
     }
   };
 
+  // Function to send data to the Python backend
   const sendToPython = async () => {
     if (!inputValue) return alert("Write some input...");
 
