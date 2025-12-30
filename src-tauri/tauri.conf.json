@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "Ollector",
-        "width": 800,
-        "height": 600,
+        "width": 802,
+        "height": 560,
         "resizable": true,
         "fullscreen": false
       }
