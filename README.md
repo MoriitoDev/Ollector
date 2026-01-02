@@ -61,7 +61,28 @@
     ```bash
     npm install
     ```
-3.  Run the development server:
+3.  Installing Rust (Required for Tauri)
+
+    To run the Tauri development server, you need to have the Rust toolchain installed.
+
+4.  Download Rust
+
+    Visit the official installer page:
+
+    ```bash
+    https://rustup.rs
+    ```
+    Run the installer and accept the default options.
+
+5.  Verify installation
+    Restart your terminal and check that Rust is available:
+    ```bash
+    cargo --version
+    ```
+
+    If this command prints a version number (e.g. cargo 1.75.0), Rust is correctly installed.
+
+6.  Run the development server:
     ```bash
     npx @tauri-apps/cli dev
     ```
