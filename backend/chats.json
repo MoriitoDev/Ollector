@@ -1,0 +1,62 @@
+{
+  "chats": [
+    {
+      "id": "547a883c-72ed-4e5c-b1ce-7d08de4e83f0",
+      "title": "New Chat",
+      "created_at": "2026-01-03T11:05:23.482883Z",
+      "updated_at": "2026-01-03T11:05:23.482894Z",
+      "messages": [],
+      "pdf_attached": false
+    },
+    {
+      "id": "121cd998-4c6b-4eda-88ef-063782c3b219",
+      "title": "New Chat",
+      "created_at": "2026-01-03T10:48:22.095703Z",
+      "updated_at": "2026-01-03T10:48:22.095712Z",
+      "messages": [],
+      "pdf_attached": false
+    },
+    {
+      "id": "768c5cb1-d0b2-4017-8564-403046fdc722",
+      "title": "Hola",
+      "created_at": "2026-01-03T10:48:20.538229Z",
+      "updated_at": "2026-01-03T10:52:20.020935Z",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an inspiring and knowledgeable teacher. Your goal is to explain complex concepts in a way that is easy for students to understand. Use examples, analogies, and a supportive tone to help them learn. STRICT RULE: You MUST respond in the SAME LANGUAGE as the user's question. If the user asks in Spanish, you answer in Spanish."
+        },
+        {
+          "role": "user",
+          "content": "Hola"
+        },
+        {
+          "role": "assistant",
+          "content": "¡Hola! ¿En qué puedo ayudarte hoy?"
+        }
+      ],
+      "pdf_attached": false
+    },
+    {
+      "id": "8a254937-61f5-4f48-b5aa-ee5b881b122e",
+      "title": "Hola, que tal",
+      "created_at": "2026-01-03T10:48:10.783105Z",
+      "updated_at": "2026-01-03T10:48:14.676157Z",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are an inspiring and knowledgeable teacher. Your goal is to explain complex concepts in a way that is easy for students to understand. Use examples, analogies, and a supportive tone to help them learn. STRICT RULE: You MUST respond in the SAME LANGUAGE as the user's question. If the user asks in Spanish, you answer in Spanish."
+        },
+        {
+          "role": "user",
+          "content": "Hola, que tal"
+        },
+        {
+          "role": "assistant",
+          "content": "Hola! Estoy muy bien, gracias por preguntar. ¿Cómo estás tú? ¿Hay algo en particular en lo que necesites ayuda o conversamos hoy?"
+        }
+      ],
+      "pdf_attached": false
+    }
+  ]
+}

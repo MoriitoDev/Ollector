@@ -18,6 +18,9 @@ Where once there were cold processes, now there is an experience guided by our m
 ## 🚀 Key Features
 
 * **📚 Friendly Explanations:** Wiku translates complex concepts into simple, easy-to-digest language.
+* **🗣️ Natural Text-to-Speech:** Listen to Wiku's responses with high-quality neural voices (supports English and Spanish).
+* **💬 Multi-Language Support:** Wiku automatically detects your language and responds accordingly (English/Spanish).
+* **📄 PDF Analysis:** Upload study documents, and Wiku will answer questions based strictly on the content provided.
 * **🎧 Focus Mode:** Interface designed to minimize distractions and maximize workflow.
 * **📝 Smart Summaries:** Ability to synthesize large volumes of information into clear outlines.
 * **🌱 Priority Organization:** Helps you decide where to start when you feel overwhelmed.
@@ -29,7 +32,7 @@ Where once there were cold processes, now there is an experience guided by our m
 ### 1. Prerequisites
 * Install the required dependencies:
     ```bash
-    pip install fastapi uvicorn llama-cpp-python PyPDF2 python-multipart 
+    pip install fastapi uvicorn llama-cpp-python PyPDF2 python-multipart edge-tts
     ```
 
 ### 2. Launching the app
